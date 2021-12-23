@@ -16,7 +16,16 @@ namespace лаба_ооп_4._1
         {
             InitializeComponent();
         }
-
+        public class CCircle
+        {
+            private int X, Y;
+            private int R = 100;
+            public CCircle()
+            {
+                X = 0;
+                Y = 0;
+            }
+        }
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
 
