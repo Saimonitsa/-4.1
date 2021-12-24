@@ -38,6 +38,7 @@ namespace лаба_ооп_4._1
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.ResumeLayout(false);
 

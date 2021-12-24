@@ -100,7 +100,20 @@ namespace лаба_ооп_4._1
                     this.circle[i] = temp[i];
                 }
             }
-            public  MyStorage()
+            public int getSelsize()
+            {
+                return selsize;
+            }
+            public void decSel(int index)
+            {
+                sel[index]--;
+            }
+            public int getSel(int index)
+            {
+                return sel[index];
+            }
+
+            public MyStorage()
             {
                 max_a = 0;
                 a = 0;
@@ -152,6 +165,7 @@ namespace лаба_ооп_4._1
             {
                 if (a > 0)
                 {
+                    l++;
                     for (int i = index; i < a; i++)
                     {
                         circle[i] = circle[i + 1];
@@ -174,7 +188,60 @@ namespace лаба_ооп_4._1
         MyStorage storage = new MyStorage(0);
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-            
+            Graphics g = CreateGraphics();
+            if (e.Button == MouseButtons.Right)
+            {
+                storage.removeSelected();
+                Refresh();
+                CCircle c = new CCircle(e.X, e.Y);
+                storage.choice++;
+                storage.add(storage.choice, c);
+                storage.paint(storage, g);
+                storage.pushToSelected(storage.choice, g);
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                if (Control.ModifierKeys == Keys.Control)
+                {
+                    storage.pushToSelected(e.X, e.Y, g);
+                }
+                else
+                {
+                    storage.removeSelected();
+                    for (int i = 0; i < storage.getCount(); i++)
+                    {
+                        storage.getObject(i).paintAsUsual(g);
+                    }
+                    storage.pushToSelected(e.X, e.Y, g);
+                }
+            }
+
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                for (int i = 0; i < storage.getSizeOfSelected(); i++)
+                {
+                    storage.remove(storage.getSelected(i));
+                    for (int j = i + 1; j < storage.getSizeOfSelected(); j++)
+                    {
+                        if (storage.getSelected(j) > storage.getSelected(i))
+                        {
+                            storage.decSelected(j);
+                        }
+                    }
+                }
+                storage.removeSelected();
+                this.Refresh();
+                Graphics g = CreateGraphics();
+                for (int i = 0; i < storage.getCount(); i++)
+                {
+                    storage.getObject(i).paintAsUsual(g);
+                }
+            }
 
         }
     }
