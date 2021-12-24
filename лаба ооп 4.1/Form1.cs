@@ -67,11 +67,15 @@ namespace лаба_ооп_4._1
 
             }
 
-        }
-        public class MySrorage {
+        };
+        public class MySrorage 
+        {
             CCircle[] circle;
             int a;
             int max_a;
+            public int l;
+            int[] sel;
+            int selsize;
 
             void checkSize()
             {
@@ -81,28 +85,38 @@ namespace лаба_ооп_4._1
             void increase()
             {
                 CCircle[] temp = new CCircle[max_a + 10];
+                int[] tmp = new int[max_a + 10];
                 for (int i = 0; i < max_a; i++)
                 {
+                    tmp[i] = sel[i];
                     temp[i] = this.circle[i];
                 }
                 max_a += 10;
+                sel = new int[max_a];
                 this.circle = new CCircle[max_a];
                 for (int i = 0; i < max_a; i++)
                 {
+                    sel[i] = tmp[i];
                     this.circle[i] = temp[i];
                 }
             }
-            public MyStorage()
+            public  MyStorage()
             {
                 max_a = 0;
                 a = 0;
+                selsize = 0;
+                l = -1;
+                sel = new int[max_a];
                 circle = new CCircle[max_a];
 
             }
             public MyStorage(int max_a)
             {
                 a = 0;
+                selsize = 0;
+                l = -1;
                 this.max_a = max_a;
+                sel = new int[max_a];
                 circle = new CCircle[max_a];
             }
             void SetObject(int index, CCircle objects)
@@ -146,7 +160,16 @@ namespace лаба_ооп_4._1
                     a++;
                 }
             }
-            
+            public void paint(MyStorage storage, Graphics g)
+            {
+                storage.removeSelected();
+                for (int i = 0; i < storage.getCount() - 1; i++)
+                {
+                    storage.GetObject(i).SimplyColor(g);
+                }
+                storage.getObject(storage.getCount() - 1).paintAsSelected(g);
+            }
+
         };
         MyStorage storage = new MyStorage(0);
         private void Form1_MouseClick(object sender, MouseEventArgs e)
