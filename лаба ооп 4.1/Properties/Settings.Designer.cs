@@ -26,12 +26,12 @@ namespace лаба_ооп_4._1.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int MyStorage {
+        public int Параметр {
             get {
-                return ((int)(this["MyStorage"]));
+                return ((int)(this["Параметр"]));
             }
             set {
-                this["MyStorage"] = value;
+                this["Параметр"] = value;
             }
         }
     }

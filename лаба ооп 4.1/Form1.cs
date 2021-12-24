@@ -112,6 +112,44 @@ namespace лаба_ооп_4._1
             {
                 return sel[index];
             }
+            public void clickSel(int x, int y, Graphics g)
+            {
+                bool flag = true;
+                for (int i = 0; i < a; i++)
+                {
+                    if (GetObject(i).check(x, y) == true)
+                    {
+                        for (int j = 0; j < selsize; j++)
+                        {
+                            if (i == sel[j])
+                            {
+                                flag = false;
+                            }
+                        }
+                        if (flag == true)
+                        {
+                            sel[selsize] = i;
+                            selsize++;
+                            GetObject(i).SelectedColor(g);
+                        }
+                    }
+                }
+            }
+            public void iSel(int i, Graphics g)
+            {
+
+                sel[selsize] = i;
+                selsize++;
+                GetObject(i).NewColor(g);
+            }
+            public void removeSel()
+            {
+                for (int i = 0; i < a; i++)
+                {
+                    sel[i] = -1;
+                }
+                selsize = 0;
+            }
 
             public MyStorage()
             {
