@@ -39,13 +39,20 @@ namespace лаба_ооп_4._1
                 this.X = x;
                 this.Y = y;
             }
+            public bool check(int x, int y)
+            {
+                if (x < this.X + 30 && x > this.X - 20 && y < this.Y + 20 && y > this.Y - 20)
+                    return true;
+                else
+                    return false;
+
+            }
 
         }
         public class MySrorage {
             CCircle[] circle;
             int a;
             int max_a;
-            int l;
 
             void checkSize()
             {
@@ -66,21 +73,29 @@ namespace лаба_ооп_4._1
                     this.circle[i] = temp[i];
                 }
             }
-            public MyStorage()
+            /*public MyStorage()
             {
                 max_a = 0;
                 a = 0;
-                l = -1;
                 circle = new CCircle[max_a];
 
             }
             public MyStorage(int max_a)
             {
-                l = -1;
                 a = 0;
                 this.max_a = max_a;
                 circle = new CCircle[max_a];
+            }*/
+            void SetObject(int index, CCircle objects)
+            {
+                if (index < max_a)
+                    circle[index] = objects;
             }
+            public CCircle GetObject(int index)
+            {
+                return circle[index];
+            }
+
             public int getCount()
             {
                 return a;
@@ -94,13 +109,30 @@ namespace лаба_ооп_4._1
                     circle[i] = circle[i - 1];
                 }
             }
+            public void add(int i, CCircle objects)
+            {
+                move(i);
+                SetObject(i, objects);
+            }
 
-
-        }
-
-
+            void remove(int index)
+            {
+                if (a > 0)
+                {
+                    for (int i = index; i < a; i++)
+                    {
+                        circle[i] = circle[i + 1];
+                        circle[i + 1] = null;
+                    }
+                    a++;
+                }
+            }
+            
+        };
+        //MyStorage storage = new MyStorage(0);
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
+            
 
         }
     }
