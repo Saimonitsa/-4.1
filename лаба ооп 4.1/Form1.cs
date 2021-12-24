@@ -39,6 +39,25 @@ namespace лаба_ооп_4._1
                 this.X = x;
                 this.Y = y;
             }
+            public void SimpleColor(Graphics g)
+            {
+                Pen pen = new Pen(Color.Gray, 5);
+                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                g.DrawEllipse(pen, rec);
+            }
+            public void SelectedColor(Graphics g)
+            {
+                Pen pen = new Pen(Color.Red, 5);
+                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                g.DrawEllipse(pen, rec);
+            }
+            public void NewColor(Graphics g)
+            {
+                Pen pen = new Pen(Color.GreenYellow, 5);
+                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                g.DrawEllipse(pen, rec);
+            }
+
             public bool check(int x, int y)
             {
                 if (x < this.X + 30 && x > this.X - 20 && y < this.Y + 20 && y > this.Y - 20)
@@ -73,7 +92,7 @@ namespace лаба_ооп_4._1
                     this.circle[i] = temp[i];
                 }
             }
-            /*public MyStorage()
+            public MyStorage()
             {
                 max_a = 0;
                 a = 0;
@@ -85,7 +104,7 @@ namespace лаба_ооп_4._1
                 a = 0;
                 this.max_a = max_a;
                 circle = new CCircle[max_a];
-            }*/
+            }
             void SetObject(int index, CCircle objects)
             {
                 if (index < max_a)
@@ -129,7 +148,7 @@ namespace лаба_ооп_4._1
             }
             
         };
-        //MyStorage storage = new MyStorage(0);
+        MyStorage storage = new MyStorage(0);
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             
