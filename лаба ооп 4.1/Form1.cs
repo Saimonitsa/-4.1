@@ -19,7 +19,7 @@ namespace лаба_ооп_4._1
         public class CCircle
         {
             private int X, Y;
-            private int R = 100;
+            private int R = 40;
             public CCircle()
             {
                 X = 0;
@@ -41,20 +41,20 @@ namespace лаба_ооп_4._1
             }
             public void SimpleColor(Graphics g)
             {
-                Pen pen = new Pen(Color.Gray, 5);
-                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                Pen pen = new Pen(Color.PaleVioletRed, 5);
+                Rectangle rec = new Rectangle(X - 20, Y - 20, R, R);
                 g.DrawEllipse(pen, rec);
             }
             public void SelectedColor(Graphics g)
             {
                 Pen pen = new Pen(Color.Red, 5);
-                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                Rectangle rec = new Rectangle(X - 20, Y - 20, R, R);
                 g.DrawEllipse(pen, rec);
             }
             public void NewColor(Graphics g)
             {
-                Pen pen = new Pen(Color.GreenYellow, 5);
-                Rectangle rec = new Rectangle(X - 50, Y - 50, R, R);
+                Pen pen = new Pen(Color.Orange, 5);
+                Rectangle rec = new Rectangle(X - 20, Y - 20, R, R);
                 g.DrawEllipse(pen, rec);
             }
 
