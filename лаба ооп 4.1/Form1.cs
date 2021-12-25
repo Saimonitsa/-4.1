@@ -68,7 +68,7 @@ namespace лаба_ооп_4._1
             }
 
         };
-        public class MySrorage 
+        public class MyStorage 
         {
             CCircle[] circle;
             int a;
@@ -199,7 +199,7 @@ namespace лаба_ооп_4._1
                 SetObject(i, objects);
             }
 
-            void remove(int index)
+            public void remove(int index)
             {
                 if (a > 0)
                 {
@@ -214,12 +214,12 @@ namespace лаба_ооп_4._1
             }
             public void paint(MyStorage storage, Graphics g)
             {
-                storage.removeSelected();
+                storage.removeSel();
                 for (int i = 0; i < storage.getCount() - 1; i++)
                 {
-                    storage.GetObject(i).SimplyColor(g);
+                    storage.GetObject(i).SimpleColor(g);
                 }
-                storage.getObject(storage.getCount() - 1).paintAsSelected(g);
+                storage.GetObject(storage.getCount() - 1).SelectedColor(g);
             }
 
         };
@@ -229,28 +229,28 @@ namespace лаба_ооп_4._1
             Graphics g = CreateGraphics();
             if (e.Button == MouseButtons.Right)
             {
-                storage.removeSelected();
+                storage.removeSel();
                 Refresh();
                 CCircle c = new CCircle(e.X, e.Y);
-                storage.choice++;
-                storage.add(storage.choice, c);
-                storage.paint(storage, g);
-                storage.pushToSelected(storage.choice, g);
+                storage.l++;
+                storage.add(storage.l, c);
+                storage.paint(storage, g); 
+                storage.iSel(storage.l, g);
             }
             if (e.Button == MouseButtons.Left)
             {
                 if (Control.ModifierKeys == Keys.Control)
                 {
-                    storage.pushToSelected(e.X, e.Y, g);
+                    storage.clickSel(e.X, e.Y, g);
                 }
                 else
                 {
-                    storage.removeSelected();
+                    storage.removeSel();
                     for (int i = 0; i < storage.getCount(); i++)
                     {
-                        storage.getObject(i).paintAsUsual(g);
+                        storage.GetObject(i).SimpleColor(g);
                     }
-                    storage.pushToSelected(e.X, e.Y, g);
+                    storage.clickSel(e.X, e.Y, g);
                 }
             }
 
@@ -261,23 +261,23 @@ namespace лаба_ооп_4._1
         {
             if (e.KeyCode == Keys.Delete)
             {
-                for (int i = 0; i < storage.getSizeOfSelected(); i++)
+                for (int i = 0; i < storage.getSelsize(); i++)
                 {
-                    storage.remove(storage.getSelected(i));
-                    for (int j = i + 1; j < storage.getSizeOfSelected(); j++)
+                    storage.remove(storage.getSel(i));
+                    for (int j = i + 1; j < storage.getSelsize(); j++)
                     {
-                        if (storage.getSelected(j) > storage.getSelected(i))
+                        if (storage.getSel(j) > storage.getSel(i))
                         {
-                            storage.decSelected(j);
+                            storage.decSel(j);
                         }
                     }
                 }
-                storage.removeSelected();
+                storage.removeSel();
                 this.Refresh();
                 Graphics g = CreateGraphics();
                 for (int i = 0; i < storage.getCount(); i++)
                 {
-                    storage.getObject(i).paintAsUsual(g);
+                    storage.GetObject(i).SimpleColor(g);
                 }
             }
 

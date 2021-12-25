@@ -22,17 +22,5 @@ namespace лаба_ооп_4._1.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int Параметр {
-            get {
-                return ((int)(this["Параметр"]));
-            }
-            set {
-                this["Параметр"] = value;
-            }
-        }
     }
 }
